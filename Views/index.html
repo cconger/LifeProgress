@@ -1,0 +1,12 @@
+<html>
+  <body>
+    <div>My Life Progress</div>
+
+    <div><div>Current Public Counters</div>
+      {% for counter in counters %}
+      <div><a href="/counter/{{counter.key}}">{{counter.title}}</a> : {{ counter.percentComplete }}%</div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
+
