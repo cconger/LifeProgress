@@ -4,5 +4,14 @@ runtime: python
 api_version: 1
 
 handlers:
+- url: /stylesheets
+  static_dir: Views/stylesheets
+
+- url: /lib
+  static_dir: Views/js
+
+- url: /images
+  static_dir: Views/images
+
 - url: /.*
   script: progress.py

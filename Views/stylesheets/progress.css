@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a:visited {
+  color: blue;
+}
+
+span.progressBar {
+  color: white;
+}
+
+.title_bar {
+  height: 20px;
+  min-width: 800px;
+  border-bottom: solid thin black;
+}
+
+.content_float {
+  width: 700px;
+  border: solid thin black;
+  margin: 2em auto;
+}
+
+.content_main {
+  font-size: 11pt;
+  margin: 1em;
+}
+
+.content_title{
+  font-size: 15pt;
+  text-decoration: bold;
+}
+
+.footer {
+  width: 600px;
+  margin: 0 auto;
+  border: solid thin black;
+  text-align: center;
+  overflow: auto;
+}
+
+.footer p {
+  font-style: italic;
+}
+
+.footer_column {
+  width: 49%;
+  float: left;
+}

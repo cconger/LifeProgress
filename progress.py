@@ -27,39 +27,46 @@ class ProgressTracker(db.Model):
     return timeDelta.days * 36400 + timeDelta.seconds
     
 
-class MainPage(webapp.RequestHandler):
+class ChromeView(webapp.RequestHandler):
+  viewPath = os.path.join(os.path.dirname(__file__), 'Views/chrome.html')
+  def renderPage(self, templateValues):
+    self.response.out.write(template.render(self.__class__.viewPath, templateValues))
+
+class MainPage(ChromeView):
   """index.html Controller"""
   def get(self):
     counters = db.GqlQuery("SELECT * FROM ProgressTracker LIMIT 5")
-    template_values = { 'counters' : counters }
-    path = os.path.join(os.path.dirname(__file__), 'Views/index.html')
-    self.response.out.write(template.render(path, template_values))
+    template_values = { 'counters' : counters,
+                        'template_content' : 'index.html'}
+    self.renderPage(template_values)
 
-class UserManager(webapp.RequestHandler):
+class UserManager(ChromeView):
   """/user/ Controller"""
   def get(self):
     user = users.get_current_user()
     if not user:
       self.redirect(users.create_login_url(self.request.uri))
+      return
 
     counters = db.GqlQuery("SELECT * FROM ProgressTracker WHERE author = :1",
                            user)
 
     template_values = {'userNick' : user.nickname(),
-                       'counters' : counters}
-    path = os.path.join(os.path.dirname(__file__), 'Views/user.html')
-    self.response.out.write(template.render(path, template_values))
+                       'counters' : counters,
+                       'template_content' : 'user.html'}
+    self.renderPage(template_values)
 
-class CounterPage(webapp.RequestHandler):
+class CounterPage(ChromeView):
   """/counter/<key> controller"""
   def get(self, counterKey):
     counter = db.get(counterKey)
 
-    template_values = {'counter' : counter}
-    path = os.path.join(os.path.dirname(__file__), 'Views/counter.html')
-    self.response.out.write(template.render(path, template_values))
+    template_values = {'counter' : counter,
+                       'template_content' : 'counter.html'}
+    self.renderPage(template_values)
 
-class CounterManager(webapp.RequestHandler):
+    # TODO(cconger): This needs to be cleaned.  The GET should not be used and the POST url is wonky.
+class CounterManager(ChromeView):
   """/counters controller"""
   def get(self):
     user = users.get_current_user()

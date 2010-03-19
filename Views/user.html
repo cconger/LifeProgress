@@ -1,22 +1,24 @@
-<html>
-  <body>
-    <div>
-      <span> Welcome {{ userNick }}</span>
-    </div>
-    <div><div>Current Counters:</div>
-      {% for counter in counters %}
-      <div><a href="/counter/{{counter.key}}">{{ counter.title }}</a>|
-        <a href="/counter/delete/{{counter.key}}">del</a></div> 
-      {% endfor %}
-    </div>
-    <div><div>Create a New Counter</div>
-      <form action="/counters" method="post">
-        <div>Description: <input type="text" name="title"></div>
-        <div>Start DateTime: <input type="text" name="startDateTime"> (hh:mm MM-DD-YYYY)</div>
-        <div>End DateTime: <input type="text" name="endDateTime"> (hh:mm MM-DD-YYYY)</div>
-        <div>Private: <input type="checkbox" name="private" checked="false" value="True"></div>
-        <div><input type="submit" value="Create"></div>
-      </form>
-  </body>
-</html>
+<div class="content_main">
+  <div class="content_header">
+    <span class="content_title">Current Counters:</span>
+  </div>
+  {% for counter in counters %}
+  <div>
+    <a href="/counter/{{counter.key}}">{{ counter.title }}</a> |
+    <a href="/counter/delete/{{counter.key}}">del</a>
+  </div> 
+  {% endfor %}
+</div>
 
+<div class="content_main">
+  <div class="content_header">
+    <span class="content_title">Create a New Counter:</span>
+  </div>
+  <form action="/counters" method="post">
+    <div>Description: <input type="text" name="title"></div>
+    <div>Start DateTime: <input type="text" name="startDateTime"> (hh:mm MM-DD-YYYY)</div>
+    <div>End DateTime: <input type="text" name="endDateTime"> (hh:mm MM-DD-YYYY)</div>
+    <div>Private: <input type="checkbox" name="private" checked="false" value="True"></div>
+    <div><input type="submit" value="Create"></div>
+  </form>
+</div>

@@ -1,12 +1,19 @@
-<html>
-  <body>
-    <div>My Life Progress</div>
+<div class="content_main">
+  <div class="content_header">
+    <span class="content_title">Current Public Counters:</span>
+  </div>
+  {% for counter in counters %}
+  <div>
+    <a href="/counter/{{counter.key}}">{{counter.title}}</a> : <span class="progressBar" id="{{counter.key}}" title="{{counter.percentComplete }}%">{{ counter.percentComplete }}</span><span>  {{ counter.percentComplete }}%</span>
+  </div>
+  {% endfor %}
+</div>
 
-    <div><div>Current Public Counters</div>
-      {% for counter in counters %}
-      <div><a href="/counter/{{counter.key}}">{{counter.title}}</a> : {{ counter.percentComplete }}%</div>
-      {% endfor %}
-    </div>
-  </body>
-</html>
-
+<div class="content_main">
+  <div class="content_header">
+    <span class="content_title">Create Your Own Counter:</span>
+  </div>
+  <div>
+    <a href="/user">Requires a Google Account</a>
+  </div>
+</div>

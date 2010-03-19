@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>My Life Progress</title>
+    <link href="/stylesheets/progress.css" rel="stylesheet" type="text/css" />
+    
+    <script type="text/javascript" src="lib/prototype.js"></script>
+    <script type="text/javascript" src="lib/progressBarHandler.js"></script>
+
+    {% if template_headers %}
+    {% include template_headers %}
+    {% endif %}
+  </head>
+  <body>
+    <div class="title_bar">My Life Progress</div>
+    <div class="welcome">
+      {% if userNick %}
+      {{ userNick }}
+      {% endif %}
+    </div>
+
+    <div class="content_float">
+      {% include template_content %}
+    </div>
+    
+    <div class="footer">
+      <p>This software is still under heavy development. Do not expect data to be persistent.</p>
+    </div>
+  </body>
+</html>
+
