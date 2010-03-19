@@ -1,8 +1,22 @@
 
-<div>
-  <span>{{counter.title}}</span>
-  <span> from {{counter.author}}</span>
-</div>
+<div class="counter_badge">
+  <div class="counter_header">
+    <div>
+      <span class="counter_title">{{counter.title}}</span>
+    </div>
+    <div>
+      <span class="counter_author">{{ counter.author.nickname }}</span>
+    </div>
+  </div>
 
-<div>{{counter.percentComplete}}%</div>
-<div>{{counter.start_date}} to {{counter.end_date}}</div>
+  <div class="counter_progress_bar">
+    <div><span class="progressBar" id="{{counter.key}}">{{counter.percentComplete}}</span></div>
+    <span> {{ counter.percentComplete }} % </span>
+  </div>
+
+  <div class="date_ranges">
+    <div class="date">
+      <span>Ends on <em>{{ counter.end_date }}</em></span>
+    </div>
+  </div>
+</div>

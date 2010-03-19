@@ -11,6 +11,29 @@ span.progressBar {
   color: white;
 }
 
+.counter_badge {
+  margin: 1em;
+  font-size: 14pt;
+  text-align: center;
+}
+
+.counter_header{
+  margin-bottom: 1em;
+}
+
+.counter_title{
+  font-weight: bold;
+  font-size: 22pt;
+}
+
+.counter_author{
+  font-style: italic;
+}
+
+.counter_progress_bar {
+  padding-bottom: .5em;
+}
+
 .title_bar {
   height: 20px;
   min-width: 800px;
